@@ -7,6 +7,7 @@ version: '1.0.0'
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dbt_project'
 
+
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
@@ -30,3 +31,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_project:
+    +materialized: view # Default materialization strategy for this project
+    dim:
+      +materialized: table # Override the default for models in the dim/ directory
+    src:
+      +materialized: ephemeral # Override the default for models in the src/ directory
