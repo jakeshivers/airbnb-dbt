@@ -1,0 +1,13 @@
+dbt_project:
+  outputs:
+    dev:
+      account: bf61943.us-east-2.aws
+      database: AIRBNB
+      password: dbtPassword123
+      role: transform
+      schema: dev
+      threads: 1
+      type: snowflake
+      user: dbt
+      warehouse: COMPUTE_WH
+  target: dev
