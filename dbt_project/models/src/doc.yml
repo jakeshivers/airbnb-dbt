@@ -1,3 +1,0 @@
-models:
-  - name: src_hosts
-    description: gets data from the raw_hosts table
