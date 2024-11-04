@@ -27,5 +27,15 @@ Follow these steps:
 
 You should now see the name of your virtual environment as a prefex infront of you commnad prompt.
 
-### install dbt
-1. Ensure your 
+## dbt features
+<ul type="square">
+    <li> dbt test
+    <li> dbt documentation
+        <dd><li> dbt docs generate</dd>
+        <dd><li> dbt docs serve</dd>
+    <li> dbt macros
+    <li> dbt seed
+</ul>
+
+## dbt lineage<br>
+![image](image.png)
