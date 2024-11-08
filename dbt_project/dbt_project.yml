@@ -23,6 +23,9 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+#project vars
+vars:
+  'dbt_date:time_zone': 'America/Denver'
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -33,6 +36,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_project:
     +materialized: view # Default materialization strategy for this project
+    +post-hook: "grant select on {{ this }} to role reporter"
     dim:
       +materialized: table # Override the default for models in the dim/ directory
     src:
