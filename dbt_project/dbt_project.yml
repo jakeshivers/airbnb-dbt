@@ -37,3 +37,6 @@ models:
       +materialized: table # Override the default for models in the dim/ directory
     src:
       +materialized: ephemeral # Override the default for models in the src/ directory
+
+vars:
+  user_name: default_user
