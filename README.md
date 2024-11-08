@@ -39,3 +39,12 @@ You should now see the name of your virtual environment as a prefex infront of y
 
 ## dbt lineage<br>
 ![image](image.png)
+
+
+## Exposures
+Exposures allow you to embed a dashboard into your documentation.
+The lineage view of your docs will allow you to see its dependencies if you enter them in the associated yaml file.
+
+
+## Quality
+This project uses `dbt-expectations`, a spinoff of Great Expectations, to do quality checks on each model.
