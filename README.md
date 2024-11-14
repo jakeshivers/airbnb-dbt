@@ -39,3 +39,36 @@ You should now see the name of your virtual environment as a prefex infront of y
 
 ## dbt lineage<br>
 ![image](image.png)
+
+
+## Exposures
+Exposures allow you to embed a dashboard into your documentation.
+The lineage view of your docs will allow you to see its dependencies if you enter them in the associated yaml file.
+
+
+## Quality
+This project uses `dbt-expectations`, a spinoff of Great Expectations, to do quality checks on each model.
+
+## Logging
+To implement custom logging, create a macro within the `macros` folder. Custom logs can be used to output messages to the terminal or to the `dbt.log` file.
+
+## Dagster
+Dagster is an excellent orchestration tool with an intuitive UI. It integrates seamlessly with dbt, making it a powerful solution for managing data workflows.
+
+Important files in the Dagster implementation:
+
+* `schedules.py` Creates schedules for Dagster jobs
+* `definitions.py` includes a Definitions object that contains all the definitions defined within your project. A definition can be an asset, a job, a schedule, a sensor, or a resource. This allows Dagster to load the definitions in a module.
+
+
+Run Dagser with this command:
+```bash
+    cd dbt_dagster_project
+    DAGSTER_DBT_PARSE_PROJECT_ON_LOAD=1 dagster dev
+```
+
+![alt text](image-1.png)
+
+Features:
+* `Jobs` tab will display the job schedules
+* `Sensors` can watch for new files in S3 buckets and kick off a run.

@@ -1,21 +1,26 @@
-{{
-    config(
-        materialized='table'
-    )
-}}
+{{ config(
+    materialized = 'table'
+) }}
 
-with fact_reviews as (
-    select * from {{ ref('fact_reviews') }}
+WITH fact_reviews AS (
+
+    SELECT
+        *
+    FROM
+        {{ ref('fact_reviews') }}
 ),
-full_moon_dates as (
-    select * from {{ ref('seed_full_moon_dates') }}
+full_moon_dates AS (
+    SELECT
+        *
+    FROM
+        {{ ref('seed_full_moon_dates') }}
 )
-select 
-     r.*
-    ,case 
-        when fm.full_moon_date is null then 'not_full_moon '
-        else 'full_moon' 
-    end as full_moon
-from fact_reviews r
-left join full_moon_dates fm 
-on (to_date(r.review_date) = dateadd(day, 1,fm.full_moon_date))
+SELECT
+    r.*,CASE
+        WHEN fm.full_moon_date IS NULL THEN 'not_full_moon '
+        ELSE 'full_moon'
+    END AS full_moon
+FROM
+    fact_reviews r
+    LEFT JOIN full_moon_dates fm
+    ON (TO_DATE(r.review_date) = DATEADD(DAY, 1, fm.full_moon_date))
